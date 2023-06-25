@@ -1,0 +1,19 @@
+CREATE TABLE warehouses (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE products (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    sku VARCHAR(10) UNIQUE NOT NULL
+);
+
+CREATE TABLE warehouse_products (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    warehouse_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (warehouse_id) REFERENCES warehouses(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
